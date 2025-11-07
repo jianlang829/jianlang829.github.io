@@ -40,8 +40,6 @@ export default {
         text: "笔记",
         items: [{ text: "学习笔记", link: "../notes/study-note" }],
       },
-      { text: "第二篇文章", link: "/second-article" },
-      { text: "关于", link: "/about" },
     ],
 
     sidebar: {
