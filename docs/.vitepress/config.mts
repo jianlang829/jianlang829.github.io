@@ -21,7 +21,7 @@ const getTutorialSidebar = () => {
 
 export default {
   base: "/",
-  title: "我的 Markdown 文章",
+  title: "我的 GitHub 博客",
   description: "用 VitePress 搭建的文章展示网站",
   // 记得根据部署路径配置 base（重要！）
   // base: '/你的仓库名/',  // 部署到 GitHub Pages 时需要
@@ -34,6 +34,7 @@ export default {
         items: [
           { text: "教程1", link: "../tutorials/first-tutorial" },
           { text: "教程2", link: "../tutorials/second-tutorial" },
+          { text: "教程3", link: "../tutorials/third-tutorial" },
         ],
       },
       {
@@ -46,17 +47,14 @@ export default {
       "/tutorials/": getTutorialSidebar(), // 动态生成教程侧边栏
       "/notes/": [
         {
-          text: "笔记列表",
-          items: [{ text: "学习笔记", link: "../notes/study-note" }],
+          text: "教程列表",
+          items: [{ text: "教程笔记1", link: "../notes" }],
         },
       ],
       "/": [
         {
           text: "首页文章",
-          items: [
-            { text: "首页", link: "/" },
-            { text: "第二篇文章", link: "/second-article" },
-          ],
+          items: [{ text: "首页", link: "/" }],
         },
       ],
     },
