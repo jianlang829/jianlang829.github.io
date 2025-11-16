@@ -1,7 +1,11 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+<<<<<<< HEAD
 import { defineConfig } from "vitepress";
+=======
+import { defineConfig } from 'vitepress'
+>>>>>>> ba8d34294348b6e591551a9fbbb643555337cd49
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
