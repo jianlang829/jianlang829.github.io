@@ -1,12 +1,13 @@
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url"; // 新增这一行
+import { fileURLToPath } from "url";
+import { defineConfig } from 'vitepress'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const getTutorialSidebar = () => {
-  const dir = path.resolve(__dirname, "../tutorials"); // 现在可以正常使用 __dirname 了
+  const dir = path.resolve(__dirname, "../tutorials");
   const files = fs.readdirSync(dir).filter((f: string) => f.endsWith(".md"));
   return [
     {
@@ -19,12 +20,21 @@ const getTutorialSidebar = () => {
   ];
 };
 
-export default {
+export default defineConfig({
   base: "/",
   title: "我的 GitHub 博客",
   description: "用 VitePress 搭建的文章展示网站",
-  // 记得根据部署路径配置 base（重要！）
-  // base: '/你的仓库名/',  // 部署到 GitHub Pages 时需要
+  
+  // 优化后的 live2d 脚本配置
+  head: [
+    [
+      'script',
+      {
+        src: 'https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.7/dist/autoload.js', // 更新到最新版本
+        defer: true // 延迟加载，不阻塞页面渲染
+      }
+    ]
+  ],
 
   themeConfig: {
     nav: [
@@ -32,23 +42,23 @@ export default {
       {
         text: "教程",
         items: [
-          { text: "教程1", link: "../tutorials/first-tutorial" },
-          { text: "教程2", link: "../tutorials/second-tutorial" },
-          { text: "教程3", link: "../tutorials/third-tutorial" },
+          { text: "教程1", link: "/tutorials/first-tutorial" }, // 修正链接路径（去掉多余的 ../）
+          { text: "教程2", link: "/tutorials/second-tutorial" },
+          { text: "教程3", link: "/tutorials/third-tutorial" },
         ],
       },
       {
         text: "笔记",
-        items: [{ text: "学习笔记", link: "../notes/study-note" }],
+        items: [{ text: "学习笔记", link: "/notes/study-note" }], // 修正链接路径
       },
     ],
 
     sidebar: {
-      "/tutorials/": getTutorialSidebar(), // 动态生成教程侧边栏
+      "/tutorials/": getTutorialSidebar(),
       "/notes/": [
         {
-          text: "教程列表",
-          items: [{ text: "教程笔记1", link: "../notes" }],
+          text: "笔记列表", // 修正标题（原"教程列表"不准确）
+          items: [{ text: "学习笔记", link: "/notes/study-note" }], // 修正链接路径
         },
       ],
       "/": [
@@ -63,4 +73,4 @@ export default {
       message: "部署于 GitHub Pages | 欢迎访问",
     },
   },
-};
+});
