@@ -25,16 +25,6 @@ export default defineConfig({
   title: "我的 GitHub 博客",
   description: "用 VitePress 搭建的文章展示网站",
 
-  // 优化后的 live2d 脚本配置
-  head: [
-    [
-      "script",
-      {
-        src: "/dist/autoload.js",
-      },
-    ],
-  ],
-
   themeConfig: {
     nav: [
       { text: "首页", link: "/" },
